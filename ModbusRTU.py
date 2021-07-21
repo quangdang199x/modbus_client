@@ -35,21 +35,29 @@ class ScaleFactor:
     FIX3 = 0.001
     pass
 
-while True:
-    result = client.read_holding_registers(0,15, unit =1)
-    voltage = result.registers[0]*ScaleFactor.FIX2
-    current = result.registers[1]*ScaleFactor.FIX3
-    power = result.registers[2]*ScaleFactor.FIX0
-    frequency = result.registers[3]*ScaleFactor.FIX2
-    mpptCurrent1 = result.registers[4]*ScaleFactor.FIX3
-    mpptVoltage1 = result.registers[5]*ScaleFactor.FIX2
-    mpptPower1 = result.registers[6]*ScaleFactor.FIX0
-    mpptCurrent2 = result.registers[7]*ScaleFactor.FIX3
-    mpptVoltage2 = result.registers[8]*ScaleFactor.FIX2
-    mpptPower2 = result.registers[9]*ScaleFactor.FIX0
-    mpptCurrent3 = result.registers[10]*ScaleFactor.FIX3
-    mpptVoltage3 = result.registers[11]*ScaleFactor.FIX2
-    mpptPower3 = result.registers[12]*ScaleFactor.FIX0
-    MyProject()
-    print("\n")
-    time.sleep(10)
+# while True:
+#     result = client.read_holding_registers(0,15, unit =1)
+#     voltage = result.registers[0]*ScaleFactor.FIX2
+#     current = result.registers[1]*ScaleFactor.FIX3
+#     power = result.registers[2]*ScaleFactor.FIX0
+#     frequency = result.registers[3]*ScaleFactor.FIX2
+#     mpptCurrent1 = result.registers[4]*ScaleFactor.FIX3
+#     mpptVoltage1 = result.registers[5]*ScaleFactor.FIX2
+#     mpptPower1 = result.registers[6]*ScaleFactor.FIX0
+#     mpptCurrent2 = result.registers[7]*ScaleFactor.FIX3
+#     mpptVoltage2 = result.registers[8]*ScaleFactor.FIX2
+#     mpptPower2 = result.registers[9]*ScaleFactor.FIX0
+#     mpptCurrent3 = result.registers[10]*ScaleFactor.FIX3
+#     mpptVoltage3 = result.registers[11]*ScaleFactor.FIX2
+#     mpptPower3 = result.registers[12]*ScaleFactor.FIX0
+#     MyProject()
+#     print("\n")
+#    time.sleep(10)
+result = client.read_holding_registers(40001, 15, unit = 1)
+x = result.registers[0]
+y = result.registers[1]
+print(x)
+print(y)
+
+voltage = ((result.registers[0] << 16) | result.registers[1])*ScaleFactor.FIX3
+print("Voltage: %sV" %(voltage))
