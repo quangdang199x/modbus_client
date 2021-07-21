@@ -1,2 +1,2 @@
-# modbus_tcp_chient
+# modbus_tcp_client
 ModbusTCP
