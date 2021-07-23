@@ -62,6 +62,3 @@ while True:
     print("\n")
     time.sleep(10)
 
-# from influxdb import InfluxDBClient
-# client = InfluxDBClient(host = 'localhost', port = 8086)
-# client.get_list_database()
