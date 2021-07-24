@@ -14,9 +14,9 @@ client_1 = ModbusClient(host="127.0.0.1", port=502)
 conection = client_1.connect()
 print(conection)
 client = InfluxDBClient('localhost', 8086, 'admin', 'Password1', 'mydb')
-client.create_database('mydb')
+# client.create_database('mydb')
 client.get_list_database()
-client.switch_database('mydb')
+client.switch_database('mynewdb')
 
 class ScaleFactor:
     GAIN0 = 1
@@ -79,10 +79,11 @@ def myField():
     client.write_points(json_payload)
 # while True:
 # myField()
-    payload = client.query('select * from Inverter_1 limit 1;')
+    payload = client.query('select * from Inverter_1;')
     time.sleep(5)
-    # print(payload)
-    print(data)
+    # print(data)
+    # print(json_payload)
+    print(payload)
 while True:
     myField()
     time.sleep(10)
